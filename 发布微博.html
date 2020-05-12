@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 需要引入的依赖库 -->
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <style>
+        #text {
+            width: 600px;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+            border: 1px solid orange;
+        }
+
+        #text textarea {
+            width: 550px;
+            height: 200px;
+            border: 5px solid green;
+            font-size: 20px;
+            margin: 0 20px;
+        }
+
+        #text button {
+            border: none;
+            color: deepskyblue;
+            background-color: gray;
+            border-radius: 15px;
+            outline: none;
+            position: absolute;
+            bottom: 50px;
+            right: 30px;
+            width: 100px;
+            height: 50px;
+            font-size: 15px;
+        }
+
+        #root ul {
+            width: 600px;
+            padding-left: 10px;
+            margin-top: 10px;
+            margin: 50px auto;
+        }
+        #root ul li{
+            border: 1px solid red;
+            margin: 20px auto;
+            background-color: orange;
+            font-size: large;
+            word-wrap: break-word;
+        }
+        #del{
+            cursor: pointer;
+        }
+        .fr {
+            float: right;
+        }
+
+        .cb {
+            clear: both;
+        }
+        .bgc{
+            background-color: black;
+            color: white;
+            font-size: 15px;
+            line-height: 24px;
+        }
+        #last{
+            margin-left: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            line-height: 16px;
+        }
+    </style>
+    <link rel="stylesheet" href="./font_1811629_ekuoao00efa/iconfont.css "/>
+</head>
+
+<body>
+    <div id="root">
+        <div id="text">
+            <p style="margin-left: 25px;color: gray;font-family: '楷体';">有什么新鲜事说出来让大家乐呵乐呵？</p>
+            <textarea v-model="val" placeholder="阴间微博"></textarea>
+            <button v-on:click="btn">发布微博</button>
+            <div id="last">
+                <span class="iconfont icon-icon-test" style="color: yellow;"></span>表情
+                <span class="iconfont icon-tupian" style="color: green;"></span>图片
+                <span class="iconfont icon-shipin" style="color: blue;"></span>视频
+                <span class="iconfont icon-huati" style="color:gray"></span>话题
+                <span class="iconfont icon-toutiao" style="color: orange;"></span>头条文章...
+            </div>
+        </div>
+        <ul>
+            <li v-for="item,index in msg" v-bind:key="index">{{ item }} <span id="del" v-on:click="del(index)" class="fr bgc">删除</span></li>
+        </ul>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data: {
+            val: "",
+            msg: [
+                "第一条微博",
+                "第二条微博"
+            ]
+        },
+        methods: {
+            btn: function () {
+                if (this.val.trim() !== "") {
+                    console.log(this.val); //这里已经获取到输入框里的值
+                    vm.msg[vm.msg.length] = this.val;
+                    this.val = ""; //???
+                }
+                else{
+                    alert("输入框不能为空！");
+                }
+            },
+            del:function(index){
+                vm.msg.splice(index,1);
+            }
+        }
+    })
+</script>
+
+</html>

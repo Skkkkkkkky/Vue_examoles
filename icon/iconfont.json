@@ -1,0 +1,44 @@
+{
+  "id": "1811629",
+  "name": "weibo",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2076269",
+      "name": "头条",
+      "font_class": "toutiao",
+      "unicode": "e892",
+      "unicode_decimal": 59538
+    },
+    {
+      "icon_id": "2462884",
+      "name": "笑脸",
+      "font_class": "icon-test",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "4406935",
+      "name": "话题",
+      "font_class": "huati",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "7145718",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "9231540",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e68d",
+      "unicode_decimal": 59021
+    }
+  ]
+}

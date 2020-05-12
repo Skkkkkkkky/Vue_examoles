@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cn.vuejs.org/js/vue.js"></script>
+    <style>
+        #root{
+            width: 1000px;
+            margin: 0 auto;
+            border: 2px solid red;
+        }
+        #root table{
+            /* margin: 10px 0;
+            margin-left: 50%;
+            transform: translateX(-50%); */
+            margin: 0 auto;
+        }
+        #root table td{
+            width: 240px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #root button{
+            margin: 10px 0;
+            background-color: gray;
+            border-radius: 34px;
+            outline: none;
+            color: yellow;
+            width: 100%;
+            height: 50px;
+            font-size: large;
+        }
+        #root span{
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #root input{
+            width: 99%;
+            margin: 10px 0;
+            height: 50px;
+            font-size: 18px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h3 style="text-align: center;">表</h3>
+        <span>商品名称：</span><br/>
+        <input type="text" v-model="name" placeholder="张三"><br/>
+        <span>商品价格：</span><br/>
+        <input type="number" v-model="price" placeholder="80（RMB）"><br/>
+        <button v-on:click="add">增加商品</button>
+        <table>
+            <tr style="background-color: orange; font-weight: bold;">
+                <td v-for="t in title">{{t}}</th>
+            </tr>
+            <tr v-for="item,index in goods">
+                <td>{{index+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td><span id="del" v-on:click="del(index)" style="cursor: pointer;">№</span></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data: {
+            title: [
+                "商品序号",
+                "商品名称",
+                "商品价格",
+                '是否删除'
+            ],
+            goods: [
+                {
+                    name: "apple",
+                    price: 18
+                },
+                {
+                    name: "banana",
+                    price: 20
+                }
+            ],
+            name: "",
+            price: ""
+        },
+        methods: {
+            add: function () {
+                if (this.name.trim() !== "" && this.price.trim() !== "") {
+                    let str = { name: this.name, price: this.price }
+                    this.goods.push(str);
+                    this.name = "";
+                    this.price = "";
+                }
+                else{
+                    alert("您的输入不合法！");
+                }
+            },
+            del: function (index) {
+                this.goods.splice(index, 1);
+            }
+        }
+    })
+</script>
+
+</html>
